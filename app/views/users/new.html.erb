@@ -1,0 +1,8 @@
+<h3>This is where we create new users</h3>
+ <%= form_for @user do |f| %>
+  Name: <%= f.text_field :name %><br>
+  Bio: <%= f.text_area :bio %><br>
+  Location: <%= f.text_field :location %><br>
+  Age: <%= f.text_field :age %><br>
+  <%= f.submit %>
+<% end %>
