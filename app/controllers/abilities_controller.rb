@@ -1,2 +1,3 @@
 class AbilitiesController < ApplicationController
+
 end

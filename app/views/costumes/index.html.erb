@@ -1,0 +1,6 @@
+<h1>Here are some of the available costumes. THERE ARE MANY MORE TO COME</h1>
+<%@costumes.all.each do |costume| %>
+<p> <%=link_to costume.name, costumes_path %> </p>
+<p> img </p>
+<br>
+<%end%>

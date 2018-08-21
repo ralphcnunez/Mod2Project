@@ -1,11 +1,18 @@
 class AvatarsController < ApplicationController
 
+
+  def index
+    @user = User.find(params[:user_id])
+    @avatars = @user.avatars
+    end
+
   def show
     @avatar = Avatar.find(params[:id])
   end
 
-  def edit
 
+  def edit
+    @avatar = Avatar.find(params[:id])
   end
 
     def new
@@ -17,11 +24,13 @@ class AvatarsController < ApplicationController
   # @avatar = @user.avatars.new(avatar_params)
 
   def create
-     # @user = User.find(params[:user_id])
-     @avatar = @user.avatars.new(avatar_params)
-    # byebug
-     if @avatar.valid?
+     @user = User.find(params[:user_id])
+     @avatar = Avatar.create(avatar_params)
+     byebug
+     # @user.avatars.new(avatar_params)
+     if @avatar
        @avatar.save
+       @user.avatars << @avatar
       redirect_to user_avatar_path(@avatar.user, @avatar)
     else
       render :new
@@ -33,11 +42,19 @@ class AvatarsController < ApplicationController
 
    def likes
      @user = User.find(params[:user_id])
-     @avatar = @user.avatars.find(params[:id])
+     @avatar = Avatar.find(params[:id])
      @like = @avatar.likes + 1
      @avatar.update(likes: @like)
      redirect_to user_avatar_path(@avatar.user, @avatar)
    end
+
+   def method_name
+
+   end
+
+
+
+
 
 
    private
