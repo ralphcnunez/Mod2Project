@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
+  # get 'sessions/new'
   resources :abilities
   resources :characters
   resources :costumes
+  resources :comments
   # resources :avatars
   resources :users do
     resources :avatars
-
   end
 
   post'/users/:id/avatars/:id/like', to: 'avatars#likes', as: 'like'
-
   root 'avatars#home', as: 'home'
+  post "/avatars/:avatar_id/comments", to: "comments#create", as: "create_comment"
 
 
 

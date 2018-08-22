@@ -2,9 +2,14 @@ class Avatar < ApplicationRecord
   belongs_to :user
   belongs_to :character
   belongs_to :costume
-  has_many :posts
+  has_many :comments
+  # accepts_nested_attributes_for :comments, reject_if: lambda {|comment| comment['content'].blank?}
 
 
+
+  def add_comment(x)
+    self.comments << x
+  end
 
   def image
     if self.character_id == 1 && self.costume_id == 1

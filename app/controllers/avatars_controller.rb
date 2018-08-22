@@ -1,34 +1,5 @@
 class AvatarsController < ApplicationController
 
-
-  # def index
-  #   @user = User.find(params[:user_id])
-  #   @avatars = @user.avatars
-  #   @popular = Avatar.most_liked.first
-  #   end
-    # 
-    # def image
-    #   if self.character_id == 1 && self.costume_id == 1
-    #      "/princess_peach_summer.png"
-    #   elsif self.character_id == 1 && self.costume_id == 2
-    #     "/princess_peach_summer.png"
-    #   elsif self.character_id == 1 && self.costume_id == 3
-    #     "/princess_peach_summer.png"
-    #   elsif self.character_id == 1 && self.costume_id == 4
-    #     "/princess_peach_summer.png"
-    #   elsif self.character_id == 2 && self.costume_id == 1
-    #     "/princess_Peach_Summer.png"
-    #   elsif self.character_id == 2 && self.costume_id == 2
-    #     "/princess_peach_summer.png"
-    #   elsif self.character_id == 2 && self.costume_id == 3
-    #     "/princess_peach_summer.png"
-    #   elsif self.character_id == 2 && self.costume_id == 4
-    #     "/princess_peach_summer.png"
-    #
-    #   end
-    # end
-
-
   def index
     @user = User.find(params[:user_id])
     @avatars = Avatar.all
@@ -37,11 +8,7 @@ class AvatarsController < ApplicationController
 
   def show
     @avatar = Avatar.find(params[:id])
-    if @avatar.id == @avatar.user.avatars.first.id
-      flash[:notice] = "You are at the first avatar"
-    elsif @avatar.id == @avatar.user.avatars.last.id
-      flash[:notice] = "You are at the last avatar"
-    end
+    @comment = Comment.new
   end
 
   def new
@@ -61,7 +28,6 @@ def create
    end
  end
 
-
   def edit
     @avatar = Avatar.find(params[:id])
 
@@ -69,8 +35,8 @@ def create
 
   def update
     @avatar = Avatar.find(params[:id])
-    @avatar.update(avatar_params)
-    if @avatar.update(avatar_params)
+    @avatar.update(comment_params)
+    if @avatar.update(comment_params)
       redirect_to user_avatar_path(@avatar.user, @avatar)
     else
       render :edit
@@ -92,7 +58,6 @@ def create
      @avatars = Avatar.find(params[:id]).destroy
      redirect_to user_avatars_path
    end
-
 
    private
 
@@ -116,7 +81,12 @@ def create
       @avatar = Avatar.find(params[:id])
     end
 
+    def comment_params
+      params.require(:avatar).permit(comments_attributes:[:content, :user_id, :avatar_id, :_destroy])
+    end
+
+
    def avatar_params
-     params.require(:avatar).permit(:name, :likes, :costume_id, :user_id, :character_id)
+     params.require(:avatar).permit(:name, :likes, :costume_id, :user_id, :character_id, comments_attributes:[:id, :content])
    end
 end

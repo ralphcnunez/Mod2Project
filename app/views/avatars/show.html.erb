@@ -14,3 +14,16 @@
 <button><%= link_to "Edit Avatar", edit_user_avatar_path(@avatar.user, @avatar) %></button>
 <%= button_to "delete", user_avatar_path(@avatar.user, @avatar), :method => :delete %>
 <%=button_to "Add Likes", like_path%>
+
+
+<h1> Comments </h1>
+<ul>
+ <% @avatar.comments.each do |comment| %>
+ <li><%= comment.content %></li>
+  <% end %>
+</ul>
+<%= form_for @comment, url: create_comment_path(@avatar) do |f| %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+ <%= f.submit "Save Comment" %>
+<% end %>
