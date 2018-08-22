@@ -1,3 +1,5 @@
+<h3> <%= flash[:notice] %></h3>
+
 <h1>Name: <%=@avatar.name%></h1>
 <h3>Likes: <%=@avatar.likes%></h3>
 <h3>User: <%= link_to @avatar.user.name, @avatar.user%></h3>

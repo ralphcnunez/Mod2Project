@@ -1,3 +1,5 @@
+
+
 <% @avatars.sort_by{|avatar| avatar.likes}.reverse.each do |avatar| %>
 <li><%= link_to avatar.name, user_avatar_path(avatar.user, avatar) %>
 <%= avatar.likes %></li>

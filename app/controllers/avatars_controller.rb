@@ -8,6 +8,11 @@ class AvatarsController < ApplicationController
 
   def show
     @avatar = Avatar.find(params[:id])
+    if @avatar.id == @avatar.user.avatars.first.id
+      flash[:notice] = "You are at the first avatar"
+    elsif @avatar.id == @avatar.user.avatars.last.id
+      flash[:notice] = "You are at the last avatar"
+    end
   end
 
   def new
