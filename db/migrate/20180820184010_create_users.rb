@@ -5,8 +5,10 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.text :bio
       t.string :location
       t.integer :age
-      t.string :img_url
+      t.string :img_url, :default => nil
+
       t.timestamps
+
     end
   end
 end

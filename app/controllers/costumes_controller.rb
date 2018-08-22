@@ -8,7 +8,4 @@ class CostumesController < ApplicationController
     @costume = Costume.find(params[:id])
   end
 
-  def edit
-    @costume = Costume.find(params[:id])
-  end
 end

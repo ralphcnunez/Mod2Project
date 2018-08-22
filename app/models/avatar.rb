@@ -8,5 +8,16 @@ class Avatar < ApplicationRecord
   #     self.img_url = rails.png
 
 
+  def self.most_liked
+     counter = 0
+     answer = []
+     all.each do |avatar|
+       if avatar.likes > counter
+         answer << avatar.name
+      end
+    end
+    answer
+  end
+
 
 end

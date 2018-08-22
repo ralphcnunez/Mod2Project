@@ -1,9 +1,16 @@
 class AvatarsController < ApplicationController
 
 
+  # def index
+  #   @user = User.find(params[:user_id])
+  #   @avatars = @user.avatars
+  #   @popular = Avatar.most_liked.first
+  #   end
+
   def index
     @user = User.find(params[:user_id])
-    @avatars = @user.avatars
+    @avatars = Avatar.all
+    @popular = Avatar.most_liked.first
     end
 
   def show
@@ -16,19 +23,14 @@ class AvatarsController < ApplicationController
   end
 
     def new
-    # byebug
-    # @user = User.find(params[:user_id])
     @avatar = Avatar.new
     end
-  # @user = User.find(params[:id])
-  # @avatar = @user.avatars.new(avatar_params)
 
   def create
      @user = User.find(params[:user_id])
-     @avatar = Avatar.create(avatar_params)
-     byebug
-     # @user.avatars.new(avatar_params)
-     if @avatar
+     @avatar = Avatar.new(avatar_params)
+     @avatar.user_id = @user.id
+        if @avatar
        @avatar.save
        @user.avatars << @avatar
       redirect_to user_avatar_path(@avatar.user, @avatar)
@@ -36,6 +38,18 @@ class AvatarsController < ApplicationController
       render :new
      end
    end
+
+  # def most_liked
+  #     counter = 0
+  #     answer = ""
+  #     Avatar.all.each do |avatar|
+  #       if avatar.likes > counter
+  #         counter = avatar
+  #      end
+  #    end
+  #    answer
+  # end
+
    def avatar_params
      params.require(:avatar).permit(:name, :likes, :costume_id, :user_id, :character_id)
    end
@@ -58,6 +72,18 @@ class AvatarsController < ApplicationController
 
 
    private
+
+  def most_liked
+      count = 0
+      answer = []
+      Avatar.all.each do |avatar|
+        if avatar.likes > count
+          answer << avatar.name
+       end
+     end
+     answer.first
+  end
+
 
    def find_user
      @user = User.find(params[:user_id])

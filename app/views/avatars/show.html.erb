@@ -1,9 +1,12 @@
 <h1><%=@avatar.name%></h1>
 <h3><%=@avatar.likes%></h3>
-<!-- <h3><%=@avatar.user.name%></h3>
+<h3><%=@avatar.user.name%></h3>
 <h3><%=@avatar.costume.name%></h3>
-<h3><%=@avatar.character.name%></h3> -->
-  <% if @avatar.character_id == 1 && @avatar.costume_id == 1%>
+<h3><%=@avatar.character.name%></h3>
+  <% if @avatar.character_id == 2 && @avatar.costume_id == 1%>
+  <%=image_tag "mariokart2.jpeg" %>
+  <% elsif @avatar.character_id == 1 && @avatar.costume_id == 1%>
   <%=image_tag "mariokart2.jpeg" %>
   <%end%>
-<%=button_to "Add Likes", user_like_path%>
+
+  <%=button_to "Add Likes", user_like_path%>
