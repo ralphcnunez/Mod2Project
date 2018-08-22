@@ -8,37 +8,44 @@ class AvatarsController < ApplicationController
 
   def show
     @avatar = Avatar.find(params[:id])
+    @first = flash[:notice] = "You are at the first avatar"
+    @last = flash[:notice] << "You are at the last avatar"
   end
+
+  def new
+  @avatar = Avatar.new
+  end
+
+
+def create
+   @user = User.find(params[:user_id])
+   @avatar = Avatar.new(avatar_params)
+   @avatar.user_id = @user.id
+   if @avatar
+     @avatar.save
+    redirect_to user_avatar_path(@avatar.user, @avatar)
+  else
+    render :new
+   end
+ end
 
 
   def edit
     @avatar = Avatar.find(params[:id])
+
   end
 
-    def new
-    # byebug
-    # @user = User.find(params[:user_id])
-    @avatar = Avatar.new
-    end
-  # @user = User.find(params[:id])
-  # @avatar = @user.avatars.new(avatar_params)
-
-  def create
-     @user = User.find(params[:user_id])
-     @avatar = Avatar.create(avatar_params)
-     byebug
-     # @user.avatars.new(avatar_params)
-     if @avatar
-       @avatar.save
-       @user.avatars << @avatar
+  def update
+    @avatar = Avatar.find(params[:id])
+    @avatar.update(avatar_params)
+    if @avatar.update(avatar_params)
       redirect_to user_avatar_path(@avatar.user, @avatar)
     else
-      render :new
-     end
-   end
-   def avatar_params
-     params.require(:avatar).permit(:name, :likes, :costume_id, :user_id, :character_id)
-   end
+      render :edit
+    end
+  end
+
+
 
    def likes
      @user = User.find(params[:user_id])
@@ -61,13 +68,14 @@ class AvatarsController < ApplicationController
 
    def find_user
      @user = User.find(params[:user_id])
-
    end
+
    def set_avatar
       @avatar = Avatar.find(params[:id])
     end
-     # def avatar_params
-     #   params.require(:avatar).permit(:name, :likes, :costume_id, :user_id, :character_id)
-     # end
+
+   def avatar_params
+     params.require(:avatar).permit(:name, :likes, :costume_id, :user_id, :character_id)
+   end
 
 end

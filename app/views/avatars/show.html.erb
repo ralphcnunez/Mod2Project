@@ -1,9 +1,17 @@
+<% if @first %>
+<%= @first %>
+<% end %>
+
+
 <h1><%=@avatar.name%></h1>
 <h3><%=@avatar.likes%></h3>
-<!-- <h3><%=@avatar.user.name%></h3>
+<h3><%=@avatar.user.name%></h3>
 <h3><%=@avatar.costume.name%></h3>
-<h3><%=@avatar.character.name%></h3> -->
-  <% if @avatar.character_id == 1 && @avatar.costume_id == 1%>
-  <%=image_tag "mariokart2.jpeg" %>
-  <%end%>
+<h3><%=@avatar.character.name%></h3>
+
+
+<button><%= link_to "Previous Avatar", user_avatar_path(@avatar.previous_avatar.user, @avatar.previous_avatar) %></button>
+<button><%= link_to "Next Avatar", user_avatar_path(@avatar.next_avatar.user, @avatar.next_avatar) %></button>
+
+<button><%= link_to "Edit Avatar", edit_user_avatar_path(@avatar.user, @avatar) %></button>
 <%=button_to "Add Likes", user_like_path%>

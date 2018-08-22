@@ -20,10 +20,11 @@ ActiveRecord::Schema.define(version: 2018_08_20_184154) do
 
   create_table "avatars", force: :cascade do |t|
     t.string "name"
-    t.integer "likes"
+    t.integer "likes", default: 0
     t.integer "user_id"
     t.integer "costume_id"
     t.integer "character_id"
+    t.string "img_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 2018_08_20_184154) do
     t.text "bio"
     t.string "location"
     t.integer "age"
+    t.string "img_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
