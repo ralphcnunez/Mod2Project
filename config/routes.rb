@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   # resources :avatars
   resources :users do
     resources :avatars
-
-    post'/users/:id/avatars/:id/like', to: 'avatars#likes', as: 'like'
   end
+
+  post'/users/:id/avatars/:id/like', to: 'avatars#likes', as: 'like'
+  root 'avatars#home', as: 'home'
+
 
 
 

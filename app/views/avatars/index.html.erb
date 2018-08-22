@@ -1,16 +1,4 @@
-<h1> Most liked Avatar: <%=@popular%></h1>
-<%@avatars.all.each do |avatar|%>
-<!-- <h1><%=link_to avatar.name, user_avatar_path(@user, avatar)%></h1> <br> -->
-
-
-
-<div class="card">
-  <h1><%= avatar.name %> the avatar</h1>
-  <a> <%= image_tag "mariokart2.jpeg"%> </a>
-  <p>Character: <a href="/characters/<%= avatar.character.id %>"><%= avatar.character.name %></a></p>
-  <p>Users: <a href="/users/<%= avatar.user.id %>"><%= avatar.user.name %></a></p>
-
-  <a href="/users/<%=@user.id%>">Back</a>
-</div>
-
+<h1>All of Your Avatars </h1>
+<%@avatars.each do |avatar|%>
+<%=link_to avatar.name, user_avatar_path(@user, avatar)%> <br>
 <%end%>
