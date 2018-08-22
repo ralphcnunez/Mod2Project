@@ -44,18 +44,9 @@ class Avatar < ApplicationRecord
       end
     end
 
-  # def next_user_id
-  #   avatar_count = self.user.avatars.count
-  #   if self.id < avatar_count
-  #     @avatar = self.id + 1
-  #   else
-  #     @avatar = self.id
-  #   end
-  # end
-
   def previous_avatar
     current_index = user_avatars_id.index(self.id)
-    if current_index > 0 
+    if current_index > 0
       @avatar = self.user.avatars[current_index - 1]
     else
       @avatar = self.user.avatars[current_index]

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   #before_action :find_user, only: [:show, :new, :edit, :update, :destroy]
+  skip_before_action :authorize ,only: [:new, :create, :show]
 
     def index
       @users = User.all
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
        if @user.valid?
          @user.save
+         flash[:notice] = "Sucessfully created an account"
         redirect_to user_path(@user)
       else
         render :new
@@ -28,7 +30,7 @@ class UsersController < ApplicationController
      end
 
     def update
-      if @user.update(user_params)
+      if User.update(user_params)
       redirect_to @user
       else
          render :edit
@@ -36,11 +38,11 @@ class UsersController < ApplicationController
     end
 
   private
-  def find_user
-    @user = User.find(params[:id])
-  end
+  # def find_user
+  #   @user = User.find(params[:id])
+  # end
     def user_params
-      params.require(:user).permit(:name, :bio, :location, :age)
+      params.require(:user).permit(:name, :bio, :location, :age, :username, :password,)
     end
 
 end

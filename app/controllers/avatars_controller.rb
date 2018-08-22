@@ -1,18 +1,13 @@
 class AvatarsController < ApplicationController
-
+  skip_before_action :authorize, only:[:home, :new, :create, :show, :likes]
 
   def index
-    @user = User.find(params[:user_id])
+    current_user
     @avatars = @user.avatars
     end
 
   def show
     @avatar = Avatar.find(params[:id])
-    if @avatar.id == @avatar.user.avatars.first.id
-      flash[:notice] = "You are at the first avatar"
-    elsif @avatar.id == @avatar.user.avatars.last.id
-      flash[:notice] = "You are at the last avatar"
-    end
   end
 
   def new

@@ -1,5 +1,14 @@
 <h3>This is where we create new users</h3>
  <%= form_for @user do |f| %>
+
+ <% if @user.errors.any? %>
+   <% @user.errors.full_messages.each do |msg| %>
+   <li><%= msg %></li>
+     <% end %>
+   <% end %>
+
+  Username: <%= f.text_field :username %>
+  Password: <%= f.password_field :password %>
   Name: <%= f.text_field :name %><br>
   Bio: <%= f.text_area :bio %><br>
   Location: <%= f.text_field :location %><br>
