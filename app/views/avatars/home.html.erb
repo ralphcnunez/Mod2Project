@@ -1,6 +1,18 @@
 
 
-<% @avatars.sort_by{|avatar| avatar.likes}.reverse.each do |avatar| %>
+<!-- <% @avatars.sort_by{|avatar| avatar.likes}.reverse.each do |avatar| %>
 <li><%= link_to avatar.name, user_avatar_path(avatar.user, avatar) %>
 <%= avatar.likes %></li>
+<% end %> -->
+
+
+
+<h1> Here are some other avatars you might like </h1>
+<% @avatars.each do |avatar| %>
+  <div class="card">
+    <a href="/avatars/<%= avatar.id %>">
+      <%= image_tag(avatar.image, alt: "rss feed", height: 142, width: 142) %>
+  <p><a href="/users/<%= avatar.user.id %>"> <%= avatar.name %></p>
+    <br>
+  </div>
 <% end %>

@@ -5,31 +5,25 @@ class Avatar < ApplicationRecord
 
 
 
-  # def image
-  #   if self.character_id == 1 && self.costume_id == 1
-  #     "mariokart2.jpeg"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-  #   end
-  # end
+  def image
+    if self.character_id == 1 && self.costume_id == 1
+       "mario_summer.png"
+    elsif self.character_id == 1 && self.costume_id == 2
+      "mario_winter.jpg"
+    elsif self.character_id == 1 && self.costume_id == 3
+      "mario_halloween.jpeg"
+    elsif self.character_id == 1 && self.costume_id == 4
+      "street_mario.jpg"
+    elsif self.character_id == 2 && self.costume_id == 1
+      "princess_peach_summer.png"
+    elsif self.character_id == 2 && self.costume_id == 2
+      "princess_peach_winter.png"
+    elsif self.character_id == 2 && self.costume_id == 3
+      "princess_peach.png"
+    elsif self.character_id == 2 && self.costume_id == 4
+      "street_peach.jpg"
+    end
+  end
 
   def user_avatars_id
     @avatars = self.user.avatars.map(&:id)
@@ -55,7 +49,7 @@ class Avatar < ApplicationRecord
 
   def previous_avatar
     current_index = user_avatars_id.index(self.id)
-    if current_index > 0 
+    if current_index > 0
       @avatar = self.user.avatars[current_index - 1]
     else
       @avatar = self.user.avatars[current_index]
