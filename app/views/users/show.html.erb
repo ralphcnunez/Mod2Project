@@ -2,5 +2,5 @@
 <h1><%=@user.name%></h1>
 
 <%@user.avatars.each do |avatar|%>
-<li><%= link_to avatar.name, user_avatar_path(@user)%></li>
+<li><%= link_to avatar.name, user_avatar_path(@user, avatar)%></li>
 <%end%>

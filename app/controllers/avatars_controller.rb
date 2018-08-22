@@ -8,8 +8,6 @@ class AvatarsController < ApplicationController
 
   def show
     @avatar = Avatar.find(params[:id])
-    @first = flash[:notice] = "You are at the first avatar"
-    @last = flash[:notice] << "You are at the last avatar"
   end
 
   def new
@@ -55,9 +53,6 @@ def create
      redirect_to user_avatar_path(@avatar.user, @avatar)
    end
 
-   def method_name
-
-   end
 
 
 
@@ -77,5 +72,4 @@ def create
    def avatar_params
      params.require(:avatar).permit(:name, :likes, :costume_id, :user_id, :character_id)
    end
-
 end
