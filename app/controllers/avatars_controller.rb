@@ -43,8 +43,6 @@ def create
     end
   end
 
-
-
    def likes
      @user = User.find(params[:user_id])
      @avatar = Avatar.find(params[:id])
@@ -53,10 +51,9 @@ def create
      redirect_to user_avatar_path(@avatar.user, @avatar)
    end
 
-
-
-
-
+   def home
+     @avatars = Avatar.all
+   end 
 
 
    private
