@@ -10,7 +10,7 @@
 <h1> Here are some other avatars you might like </h1>
 <% @avatars.each do |avatar| %>
   <div class="card">
-    <a href="/avatars/<%= avatar.id %>">
+    <a href="users/<%=avatar.user_id%>/avatars/<%=avatar.id%>">
       <%= image_tag(avatar.image, alt: "rss feed", height: 142, width: 142) %>
   <p><a href="/users/<%= avatar.user.id %>"> <%= avatar.name %></p>
     <br>
