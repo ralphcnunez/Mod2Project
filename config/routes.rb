@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   post'/users/:id/avatars/:id/like', to: 'avatars#likes', as: 'like'
-  root 'avatars#home'
+  root 'avatars#home', as: 'home'
 
 
 

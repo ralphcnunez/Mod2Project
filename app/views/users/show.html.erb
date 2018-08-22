@@ -4,3 +4,5 @@
 <%@user.avatars.each do |avatar|%>
 <li><%= link_to avatar.name, user_avatar_path(@user, avatar)%></li>
 <%end%>
+
+<%= link_to "Create Avatar", new_user_avatar_path(@user) %>

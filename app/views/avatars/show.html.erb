@@ -6,6 +6,8 @@
 
 <button><%= link_to "Previous Avatar", user_avatar_path(@avatar.previous_avatar.user, @avatar.previous_avatar) %></button>
 <button><%= link_to "Next Avatar", user_avatar_path(@avatar.next_avatar.user, @avatar.next_avatar) %></button>
-<button><%= link_to "All Avatar",  %></button>
+<button><%= link_to "All your Avatar", user_avatars_path  %></button>
+<button><%= link_to "All Users Avatar", home_path  %></button>
 <button><%= link_to "Edit Avatar", edit_user_avatar_path(@avatar.user, @avatar) %></button>
-<%=button_to "Add Likes", user_like_path%>
+<%= button_to "delete", user_avatar_path(@avatar.user, @avatar), :method => :delete %>
+<%=button_to "Add Likes", like_path%>

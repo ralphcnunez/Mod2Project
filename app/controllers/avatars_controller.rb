@@ -44,7 +44,6 @@ def create
   end
 
    def likes
-     @user = User.find(params[:user_id])
      @avatar = Avatar.find(params[:id])
      @like = @avatar.likes + 1
      @avatar.update(likes: @like)
@@ -53,7 +52,12 @@ def create
 
    def home
      @avatars = Avatar.all
-   end 
+   end
+
+   def destroy
+     @avatars = Avatar.find(params[:id]).destroy
+     redirect_to user_avatars_path
+   end
 
 
    private
