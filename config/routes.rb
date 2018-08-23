@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   resources :costumes
   # resources :avatars
   resources :users do
-  resources :avatars
+    resources :avatars
   end
   #
-  # post'/users/:id/avatars/:id/like', to: 'avatars#likes', as: 'like'
-  # root 'avatars#home', as: 'home'
+  post'/users/:id/avatars/:id/like', to: 'avatars#likes', as: 'like'
+  root 'avatars#home', as: 'home'
 
 #   ##
 #   get 'users/new', to: 'users_sessions#new', as: 'users_login'

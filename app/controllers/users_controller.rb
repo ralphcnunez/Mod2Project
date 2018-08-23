@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authorized, only: [:new, :index, :create, :show]
-before_action :find_user, only: [:show, :edit, :update, :destroy]
+# before_action :find_user, only: [:show, :edit, :update, :destroy]
     def index
       @users = User.all
     end
@@ -21,7 +21,8 @@ before_action :find_user, only: [:show, :edit, :update, :destroy]
       @user = User.create(password_params)
        if @user.valid?
          @user.save
-        redirect_to user_path(@user)
+         session[:user_id] = @user.id
+        redirect_to new_user_avatar_path(@user)
       else
         render :new
        end

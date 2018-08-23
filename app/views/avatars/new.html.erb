@@ -1,14 +1,2 @@
-<h3>This is where we create new avatars</h3>
-
-<%= form_for @avatar, url: user_avatar_path do |f| %>
-  <% if @avatar.errors.any? %>
-    <% @avatar.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-      <% end %>
-    <% end %>
-
- First name: <%= f.text_field :name %><br>
- Costume Name: <%= f.collection_select(:costume_id, Costume.all, :id, :name) %><br>
- Character Name: <%= f.collection_select(:character_id, Character.all, :id, :name) %><br>
- <%= f.submit %>
-<% end %>
+<h1>Make a new Avatar</h1>
+<%= render partial: 'form' %>

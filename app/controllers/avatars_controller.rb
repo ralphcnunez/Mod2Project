@@ -1,6 +1,4 @@
 class AvatarsController < ApplicationController
-  skip_before_action :authorized, only: [:index, :show, :edit, :update, :destroy, :new]
-
 
   def index
     @user = User.find(params[:user_id])
@@ -18,11 +16,12 @@ class AvatarsController < ApplicationController
   end
 
   def new
-  @avatar = Avatar.new
+
+    @avatar = Avatar.new(user_id: params[:user_id])
   end
 
 
-def create
+  def create
    @user = User.find(params[:user_id])
    @avatar = Avatar.new(avatar_params)
    @avatar.user_id = @user.id
@@ -31,8 +30,8 @@ def create
     redirect_to user_avatar_path(@avatar.user, @avatar)
   else
     render :new
-   end
- end
+    end
+  end
 
 
   def edit
