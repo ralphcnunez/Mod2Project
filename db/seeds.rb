@@ -20,9 +20,9 @@ end
   end
 
   15.times do
-  User.create(name: Faker::BreakingBad.character, bio: Faker::Dog.breed, location: Faker::WorldCup.city, age: rand(1..10))
+  User.create(name: Faker::BreakingBad.character, bio: Faker::Dog.breed, location: Faker::WorldCup.city, age: rand(1..10), username: Faker::HarryPotter.character, password: "hi")
   end
 
   15.times do
-  Avatar.create(name: Faker::Dog.name, likes: rand(1..10), user_id: rand(1..10), costume_id: rand(1..10), character_id: rand(1..10) )
+  Avatar.create(name: Faker::Dog.name, likes: 0 , user_id: rand(1..10), costume_id: rand(1..10), character_id: rand(1..10) )
   end

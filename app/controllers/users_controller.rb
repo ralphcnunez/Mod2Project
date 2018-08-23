@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  #before_action :find_user, only: [:show, :new, :edit, :update, :destroy]
+
 
     def index
       @users = User.all
@@ -37,15 +37,17 @@ class UsersController < ApplicationController
     end
 
     def destroy
-      @user = User.find(params[:id]).destroy
+      @user = User.find(params[:id])
+      @user.avatars.each do |avatar|
+        avatar.destroy
+      end
+      @user.destroy
       redirect_to users_path
     end
 
 
   private
-  # def find_user
-  #   @user = User.find(params[:id])
-  # end
+
     def user_params
       params.require(:user).permit(:name, :bio, :location, :age, :username, :password,)
     end

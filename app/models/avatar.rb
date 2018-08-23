@@ -31,6 +31,8 @@ class Avatar < ApplicationRecord
   #   end
   # end
 
+  
+
   def user_avatars_id
     @avatars = self.user.avatars.map(&:id)
   end
@@ -52,7 +54,4 @@ class Avatar < ApplicationRecord
       @avatar = self.user.avatars[current_index]
     end
   end
-
-
-
 end
