@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :abilities
   resources :characters
   resources :costumes
@@ -9,11 +10,7 @@ Rails.application.routes.draw do
 
   post'/users/:id/avatars/:id/like', to: 'avatars#likes', as: 'like'
   root 'avatars#home', as: 'home'
-
-
-
-
-
+  post '/avatars/:avatar_id/comments', to: 'comments#create', as: 'create_comment'
 
   ###STATIC
   # root to: 'static#home'

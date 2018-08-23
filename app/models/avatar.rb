@@ -2,6 +2,8 @@ class Avatar < ApplicationRecord
   belongs_to :user
   belongs_to :character
   belongs_to :costume
+  has_many :comments
+
 
 
 
@@ -31,7 +33,7 @@ class Avatar < ApplicationRecord
   #   end
   # end
 
-  
+
 
   def user_avatars_id
     @avatars = self.user.avatars.map(&:id)

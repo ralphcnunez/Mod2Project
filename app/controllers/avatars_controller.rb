@@ -1,11 +1,13 @@
 class AvatarsController < ApplicationController
-  def index 
+
+  def index
     @user = User.find(params[:user_id])
     @avatars = @user.avatars
     end
 
   def show
     @avatar = Avatar.find(params[:id])
+    @comment = Comment.new(avatar_id: @avatar.id, user_id: @avatar.user.id)
   end
 
   def new
@@ -28,7 +30,6 @@ def create
 
   def edit
     @avatar = Avatar.find(params[:id])
-
   end
 
   def update
