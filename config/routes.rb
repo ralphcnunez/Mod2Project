@@ -9,9 +9,7 @@ Rails.application.routes.draw do
 
   post'/users/:id/avatars/:id/like', to: 'avatars#likes', as: 'like'
   root 'avatars#home', as: 'home'
-  get "signup", to: "users#new", as: "signup"
-  get "login", to: "sessions#new", as: "login"
-  post "login", to: "sessions#create", as: "sessions"
+
 
 
 

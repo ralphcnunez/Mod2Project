@@ -1,8 +1,6 @@
 class AvatarsController < ApplicationController
-  skip_before_action :authorize, only:[:home, :new, :create, :show, :likes]
-
-  def index
-    current_user
+  def index 
+    @user = User.find(params[:user_id])
     @avatars = @user.avatars
     end
 
