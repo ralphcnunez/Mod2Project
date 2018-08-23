@@ -1,11 +1,13 @@
 class ApplicationController < ActionController::Base
 #   before_action :authorize
-#   def current_user
-#     if session[:user_id]
-#       @user = User.find_by(id: session[:user_id])
-#     else
-#     end
-#   end
+  helper_method :current_user
+  
+  def current_user
+    if session[:user_id]
+      @user = User.find_by(id: session[:user_id])
+    else
+    end
+  end
 #
 #   def logged_in?
 #     !!current_user
@@ -16,4 +18,4 @@ class ApplicationController < ActionController::Base
 #   end
 #
 # end
-end 
+end

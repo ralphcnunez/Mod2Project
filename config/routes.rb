@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :abilities
   resources :characters
   resources :costumes
-  # resources :avatars
+  resources :sessions
   resources :users do
     resources :avatars
   end
