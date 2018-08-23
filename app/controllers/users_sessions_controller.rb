@@ -1,6 +1,5 @@
-class SessionsController < ApplicationController
-  skip_before_action :authorized, except: :destroy
-
+class UserSessionsController < ApplicationController
+  skip_before_action :authorized, only: [:new, :create]
 def new
   render :new
 end
@@ -11,10 +10,10 @@ def create
   @user = User.find_by({ email: params[:email] })
   # attempt to authenticate the user by username
   if !!@user && @user.authenticate(params[:password])
-    flash[:notice] = "Successfully logged in #{@user.username}!"
+    flash[:notice] = "Successfully logged in #{@user.email}!"
     # store the logged in user somewhere
     session[:user_id] = @user.id
-    redirect_to profile_path
+    redirect_to user_path(@user)
   else
     flash[:notice] = "Invalid username or password"
     redirect_to login_path

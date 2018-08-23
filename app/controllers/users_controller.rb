@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  #before_action :find_user, only: [:show, :new, :edit, :update, :destroy]
-
+  skip_before_action :authorized, only: [:new, :index, :create, :show]
+before_action :find_user, only: [:show, :edit, :update, :destroy]
     def index
       @users = User.all
     end
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     end
 
     def create
-      @user = User.new(user_params)
+      @user = User.create(password_params)
        if @user.valid?
          @user.save
         redirect_to user_path(@user)
@@ -38,6 +38,11 @@ class UsersController < ApplicationController
   private
   def find_user
     @user = User.find(params[:id])
+  end
+
+  def password_params
+    params.require(:user).permit(:email, :password)
+
   end
     def user_params
       params.require(:user).permit(:name, :bio, :location, :age)

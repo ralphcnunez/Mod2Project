@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_20_184154) do
+ActiveRecord::Schema.define(version: 2018_08_22_181243) do
 
   create_table "abilities", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2018_08_20_184154) do
     t.integer "user_id"
     t.integer "costume_id"
     t.integer "character_id"
+    t.integer "comments_id", default: 0
     t.string "img_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,6 +38,14 @@ ActiveRecord::Schema.define(version: 2018_08_20_184154) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "avatar_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "costumes", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -44,6 +53,8 @@ ActiveRecord::Schema.define(version: 2018_08_20_184154) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
     t.string "name"
     t.text "bio"
     t.string "location"

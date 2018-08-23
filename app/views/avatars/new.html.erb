@@ -1,6 +1,6 @@
 <h3>This is where we create new avatars</h3>
 
-<%= form_for @avatar, url: user_avatars_path do |f| %>
+<%= form_for @avatar, url: user_avatar_path do |f| %>
   <% if @avatar.errors.any? %>
     <% @avatar.errors.full_messages.each do |msg| %>
     <li><%= msg %></li>

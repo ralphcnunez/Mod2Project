@@ -1,10 +1,20 @@
-<!-- <h3>This is where we create new avatars</h3>
- <%= form_for @avatar do |f| %>
-  First name: <%= f.text_field :name %><br>
-  Last name: <%= f.text_field :likes %><br>
-  Costume ID: <%= f.collection_select(:costume_id, Costume.all, :id, :name) %><br>
-  Character ID: <%= f.collection_select(:character_id, Character.all, :id, :name) %><br>
-  User ID: <%= f.collection_select(:user_id, User.all, :id, :name) %><br>
 
-  <%= f.submit %>
-<% end %> -->
+<%= form_for @user do |f| %>
+<ul>
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+    <% end %>
+  <% end %>
+  </ul>
+  <%= f.label "Band/user Name" %>
+  <%= f.text_field :name %> <br>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %> <br>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %> <br>
+
+  <%= f.submit "Create my account" %>
+  <% end %>

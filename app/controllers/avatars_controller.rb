@@ -1,32 +1,5 @@
 class AvatarsController < ApplicationController
-
-
-  # def index
-  #   @user = User.find(params[:user_id])
-  #   @avatars = @user.avatars
-  #   @popular = Avatar.most_liked.first
-  #   end
-    # 
-    # def image
-    #   if self.character_id == 1 && self.costume_id == 1
-    #      "/princess_peach_summer.png"
-    #   elsif self.character_id == 1 && self.costume_id == 2
-    #     "/princess_peach_summer.png"
-    #   elsif self.character_id == 1 && self.costume_id == 3
-    #     "/princess_peach_summer.png"
-    #   elsif self.character_id == 1 && self.costume_id == 4
-    #     "/princess_peach_summer.png"
-    #   elsif self.character_id == 2 && self.costume_id == 1
-    #     "/princess_Peach_Summer.png"
-    #   elsif self.character_id == 2 && self.costume_id == 2
-    #     "/princess_peach_summer.png"
-    #   elsif self.character_id == 2 && self.costume_id == 3
-    #     "/princess_peach_summer.png"
-    #   elsif self.character_id == 2 && self.costume_id == 4
-    #     "/princess_peach_summer.png"
-    #
-    #   end
-    # end
+  skip_before_action :authorized, only: [:index, :show, :edit, :update, :destroy, :new]
 
 
   def index
