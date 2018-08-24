@@ -7,31 +7,25 @@ class Avatar < ApplicationRecord
 
 
 
-  # def image
-  #   if self.character_id == 1 && self.costume_id == 1
-  #     "mariokart2.jpeg"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-    # elsif self.character_id == 1 && self.costume_id == 1
-    #   "img"
-  #   end
-  # end
+  def image
+    if self.character_id == 1 && self.costume_id == 1
+       "mario_summer.png"
+    elsif self.character_id == 1 && self.costume_id == 2
+      "mario_winter.jpg"
+    elsif self.character_id == 1 && self.costume_id == 3
+      "mario_halloween.jpeg"
+    elsif self.character_id == 1 && self.costume_id == 4
+      "street_mario.jpg"
+    elsif self.character_id == 2 && self.costume_id == 1
+      "princess_peach_summer.png"
+    elsif self.character_id == 2 && self.costume_id == 2
+      "princess_peach_winter.png"
+    elsif self.character_id == 2 && self.costume_id == 3
+      "mario_street_wear.png"
+    elsif self.character_id == 2 && self.costume_id == 4
+      "street_peach.jpg"
+    end
+  end
 
 
 

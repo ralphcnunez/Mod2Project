@@ -7,15 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-15.times do
-Ability.create(name: Faker::Superhero.power)
-end
+  10.times do
+    Ability.create(name: Faker::HarryPotter.character)
+  end
 
-  15.times do
+  2.times do
   Character.create!(name: Faker::FamilyGuy.character, motto: Faker::FamousLastWords.last_words, ability_id: rand(1..10))
   end
 
-  15.times do
+  4.times do
   Costume.create(name: Faker::Color.color_name)
   end
 
@@ -24,5 +24,5 @@ end
   end
 
   15.times do
-  Avatar.create(name: Faker::Dog.name, likes: 0 , user_id: rand(1..10), costume_id: rand(1..10), character_id: rand(1..10) )
+  Avatar.create(name: Faker::Dog.name, likes: 0 , user_id: rand(1..10), costume_id: rand(1..8), character_id: rand(1..8) )
   end

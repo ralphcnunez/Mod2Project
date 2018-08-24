@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post'/users/:id/avatars/:id/like', to: 'avatars#likes', as: 'like'
   root 'avatars#home', as: 'home'
   post '/avatars/:avatar_id/comments', to: 'comments#create', as: 'create_comment'
+  delete '/logout', to: 'session#destroy', as: 'logout'
 
   ###STATIC
   # root to: 'static#home'

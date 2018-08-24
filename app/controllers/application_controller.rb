@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
     end
   end
 #
-#   def logged_in?
-#     !!current_user
-#   end
+  # def logged_in?
+  #   !!current_user
+  # end
 #
 #   def authorize
 #     redirect_to login_path unless logged_in?

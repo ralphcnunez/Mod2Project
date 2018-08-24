@@ -1,8 +1,30 @@
-<h1><%= @user.name %></h1>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>User Avatar</title>
+  <style>
+    .style_image{
+      border: 1px solid black;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1><%= @user.name %></h1>
 
-<%@user.avatars.each do |avatar|%>
-<li><%= link_to avatar.name, user_avatar_path(@user, avatar)%></li>
-<%end%>
 
-<%= link_to "Create Avatar", new_user_avatar_path(@user) %>
-<%= button_to "Delete Account", @user, :method => :delete %>
+
+  <%@user.avatars.each do |avatar|%>
+  <%= link_to image_tag(avatar.image, alt: "avatar pic", height: 142, width: 142,:class => "style_image"), user_avatar_path(avatar.user, avatar) %>
+  <%end%>
+    <%if current_user.nil?  %>
+  <% else current_user.id == @user.id %>
+    <%= link_to "Create Avatar", new_user_avatar_path(@user) %>
+    <%= button_to "Log Out", session_path("hello"), method: :delete %> </a>
+    <%= button_to "Delete Account", @user, :method => :delete,  data: {confirm: "Are you sure?"} %>
+  <% end %>
+
+</body>
+</html>

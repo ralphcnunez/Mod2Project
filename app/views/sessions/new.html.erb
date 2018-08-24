@@ -1,8 +1,36 @@
-<h1>Login</h1>
-<%= form_tag sessions_path do %>
-  <%= label_tag "Username" %>
-  <%= text_field_tag :username %>
-  <%= label_tag "Password" %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Sign In" %>
-<% end %>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="ui two column middle aligned very relaxed stackable grid">
+  <div class="column">
+    <div class="ui form">
+      <div class="field">
+        <%= form_tag sessions_path do %>
+        <label>Username</label>
+        <div class="ui left icon input">
+          <input type= <%= text_field_tag :username %> <br>
+          <i class="user icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <div class="ui left icon input">
+          <input type=<%= password_field_tag :password %>
+          <i class="lock icon"></i>
+        </div>
+      </div>
+      <%= submit_tag "Log In", :class => "ui blue submit button" %>
+    </div>
+  </div>
+  <% end %>
+
+</body>
+</html>

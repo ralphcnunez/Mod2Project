@@ -1,6 +1,23 @@
-<%= link_to "Create User", new_user_path %>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .style_image{
+      border: 1px solid black;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
 
-<% @avatars.sort_by{|avatar| avatar.likes}.reverse.each do |avatar| %>
-<li><%= link_to avatar.name, user_avatar_path(avatar.user, avatar) %>
-<%= avatar.likes %></li>
-<% end %>
+  <% @avatars.sort_by{|avatar| avatar.likes}.reverse.each do |avatar| %>
+    <%= link_to image_tag(avatar.image, alt: "avatar pic", height: 142, width: 142,:class => "style_image"), user_avatar_path(avatar.user, avatar) %>
+    Likes: <%= avatar.likes %>
+  <% end %>
+
+
+</body>
+</html>
