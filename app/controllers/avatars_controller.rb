@@ -11,14 +11,16 @@ class AvatarsController < ApplicationController
   end
 
   def new
+    if current_user == nil
+      redirect_to home_path
+    end
   @avatar = Avatar.new
   end
 
 
 def create
-   @user = User.find(params[:user_id])
    @avatar = Avatar.new(avatar_params)
-   @avatar.user_id = @user.id
+   @avatar.user_id = current_user.id
    if @avatar
      @avatar.save
     redirect_to user_avatar_path(@avatar.user, @avatar)
@@ -70,6 +72,6 @@ def create
     end
 
    def avatar_params
-     params.require(:avatar).permit(:name, :likes, :costume_id, :user_id, :character_id)
+     params.require(:avatar).permit(:name, :likes, :costume_id, :user_id, :character_id, :ability_id)
    end
 end

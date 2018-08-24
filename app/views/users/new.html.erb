@@ -3,48 +3,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .wrapper {
+      padding-left: 15px;
+    }
+  </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css">
   <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.js"></script>
   <title>Document</title>
 </head>
 <body>
-  <h3>This is where we create new users</h3>
-   <%= form_for @user do |f| %>
-
-   <% if @user.errors.any? %>
-     <% @user.errors.full_messages.each do |msg| %>
-     <li><%= msg %></li>
-       <% end %>
-     <% end %>
-
-    Username: <%= f.text_field :username %> <br>
-    Password: <%= f.password_field :password %> <br>
-    Name: <%= f.text_field :name %><br>
-    Bio: <%= f.text_area :bio %><br>
-    Location: <%= f.text_field :location %><br>
-    Age: <%= f.text_field :age %><br>
-    <%= f.submit %>
-  <% end %>
-
-  <form class="ui form">
-    <%= form_for @user do |f| %>
-    <% if @user.errors.any? %>
-    <% @user.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-    <% end %>
-    <div class="field">
-
-      <label>Username: </label>
-      <input <type="text" name="<%= f.text_field :username  %>" placeholder="Last Name"
-    </div>
-    <div class="field">
-      <label>Last Name</label>
-      <input type="text" name="last-name" placeholder="Last Name">
-    </div>
-    <button class="ui button" type="<%= f.submit %>">Submit</button>
-    <% end %>
-</form>
-
-</body>
-</html>
+<div class="wrapper">
+ <div class="center">
+    <h2>Sign up</h2>
+    <%= form_for(@user) do |f| %>
+      <%= f.text_field :username, placeholder: "username*" %><br>
+      <%= f.password_field :password, placeholder: "Password*" %><br>
+      <%= f.text_field :name, placeholder: "name*" %><br>
+      <%= f.text_field :location, placeholder: "Location*" %><br>
+      <%= f.text_field :img_url, placeholder: "Photo" %> <br>
+      <%= f.number_field :age, placeholder: "age", autofocus: true %><br>
+      <%= f.text_area :bio, placeholder: "bio" %><br>
+        <div><%= f.submit "Sign up", class: "btn btn-large btn-primary" %></div>
+        <% end %>
+  </div>
+</div>

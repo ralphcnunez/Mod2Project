@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_180515) do
     t.integer "costume_id"
     t.integer "character_id"
     t.string "img_url"
+    t.string "ability_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -32,7 +33,6 @@ ActiveRecord::Schema.define(version: 2018_08_23_180515) do
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.string "motto"
-    t.integer "ability_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

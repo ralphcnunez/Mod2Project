@@ -18,7 +18,14 @@ class CommentsController < ApplicationController
      else
        render :new
      end
-  end
+   end
+
+   def destroy
+     @comment = Comment.find(params[:id]).destroy
+     redirect_to user_avatar_path(@comment.user, @comment.avatar)
+   end
+
+
 
   private
 

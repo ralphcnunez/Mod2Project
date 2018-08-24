@@ -7,6 +7,7 @@ class CreateAvatars < ActiveRecord::Migration[5.2]
       t.integer :costume_id
       t.integer :character_id
       t.string :img_url, default: nil
+      t.string :ability_id
 
       t.timestamps
     end

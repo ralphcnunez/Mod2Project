@@ -7,22 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-  10.times do
-    Ability.create(name: Faker::HarryPotter.character)
-  end
+15.times do
+Ability.create(name: Faker::Superhero.power)
+end
 
-  2.times do
-  Character.create!(name: Faker::FamilyGuy.character, motto: Faker::FamousLastWords.last_words, ability_id: rand(1..10))
-  end
+  Character.create!(name: "Mario", motto: Faker::FamousLastWords.last_words)
+  Character.create(name: "Princess Peach", motto: Faker::FamousLastWords.last_words)
 
-  4.times do
-  Costume.create(name: Faker::Color.color_name)
-  end
-
-  15.times do
-  User.create(name: Faker::BreakingBad.character, bio: Faker::Dog.breed, location: Faker::WorldCup.city, age: rand(1..10), username: Faker::HarryPotter.character, password: "hi")
-  end
-
-  15.times do
-  Avatar.create(name: Faker::Dog.name, likes: 0 , user_id: rand(1..10), costume_id: rand(1..8), character_id: rand(1..8) )
-  end
+  Costume.create(name: "Summer")
+  Costume.create(name: "Winter")
+  Costume.create(name: "Fall")
+  Costume.create(name: "Street Fighter")

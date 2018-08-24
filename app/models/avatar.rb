@@ -3,6 +3,9 @@ class Avatar < ApplicationRecord
   belongs_to :character
   belongs_to :costume
   has_many :comments
+  belongs_to :ability
+
+  validates :name, uniqueness: { case_sensitive: false }
 
 
 

@@ -4,18 +4,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.js"></script>
   <style>
-    .style_image{
-      border: 1px solid black;
-      padding: 15px;
+    .card{
+      float: left;
     }
   </style>
 </head>
 <body>
-
   <% @avatars.sort_by{|avatar| avatar.likes}.reverse.each do |avatar| %>
-    <%= link_to image_tag(avatar.image, alt: "avatar pic", height: 142, width: 142,:class => "style_image"), user_avatar_path(avatar.user, avatar) %>
-    Likes: <%= avatar.likes %>
+    <div class="ui card">
+      <%= link_to image_tag(avatar.image, alt: "avatar pic", height: 142, width: 142,:class => "style_image"), user_avatar_path(avatar.user, avatar) %>
+      <div class="content"> Creator: <%= avatar.user.name %> <br>
+      Likes: <%= avatar.likes %>   </div>
+
+    </div>
   <% end %>
 
 

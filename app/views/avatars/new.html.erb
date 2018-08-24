@@ -10,5 +10,6 @@
  First name: <%= f.text_field :name %><br>
  Costume Name: <%= f.collection_select(:costume_id, Costume.all, :id, :name) %><br>
  Character Name: <%= f.collection_select(:character_id, Character.all, :id, :name) %><br>
+ Ability <%= f.collection_select(:ability_id, Ability.all, :id, :name) %><br>
  <%= f.submit %>
 <% end %>
